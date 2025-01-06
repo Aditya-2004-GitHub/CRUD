@@ -15,8 +15,10 @@
                     <label for="text" class="form-lable mb-2"><strong>Mobile :</strong> </label>
                     <input class="form-control w-75 border" type="text" placeholder="mobile" [(ngModel)]="mobile">
                 </div><br>
-                <button class="btn btn-5 btn-dark my-3 w-auto" (click)="submit()" *ngIf="isUpdate == false">Submit</button>
-                <button class="btn btn-5 btn-dark my-3 w-auto" (click)="update()" *ngIf="isUpdate == true"> Update </button>
+                <button class="btn btn-5 btn-dark my-3 w-auto" (click)="submit()"
+                    *ngIf="isUpdate == false">Submit</button>
+                <button class="btn btn-5 btn-dark my-3 w-auto" (click)="update()" *ngIf="isUpdate == true"> Update
+                </button>
             </div>
             <div class="col-lg-7 col-12">
                 <table class="table table-dark table-bordered">
@@ -35,8 +37,12 @@
                             <td>{{item.lName}}</td>
                             <td>{{item.mobile}}</td>
                             <td>
-                                <button (click)="edit($index)" class="btn btn-5 mx-2 text-warning"><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button (click)="delete($index)" class="btn btn-5 text-danger mx-2"><i class="fa-regular fa-trash-can"></i></button>
+                                <button (click)="edit($index)" class="btn btn-5 mx-2 text-warning"><i
+                                        class="fa-regular fa-pen-to-square"></i></button>
+                                <button (click)="delete($index)" class="btn btn-5 text-danger mx-2"><i
+                                        class="fa-regular fa-trash-can"></i></button>
+                                <button (click)="openModal(template,$index)" class="btn btn-5 text-secondary mx-2"><i
+                                        class="fa-regular fa-eye"></i></button>
                             </td>
                         </tr>
                         }
@@ -45,4 +51,21 @@
             </div>
         </div>
     </div>
+
+    <ng-template #template>
+        <!-- @for (item of userData; track $index) { -->
+        <!-- @if (isUpdate) { -->
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">{{userData[selectIndex].fName}}</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <pre>Full Name: {{userData[selectIndex].fName}} {{userData[selectIndex].lName}}</pre>
+            <pre>Mobile No.: {{userData[selectIndex].mobile}}</pre>
+        </div>
+        <!-- } -->
+        <!-- } -->
+    </ng-template>
 </body>

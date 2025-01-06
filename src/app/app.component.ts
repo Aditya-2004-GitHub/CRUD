@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+// import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +15,11 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'DummyApi';
 
+  // constructor(private modalService: BsModalService) {}
+  modalRef?: BsModalRef;
 
-  constructor(private http:HttpClient){
+
+  constructor(private http:HttpClient , private modalService: BsModalService){
     this.userData = JSON.parse(localStorage.getItem("DummyApi")|| '')
   }
 
@@ -25,6 +30,17 @@ export class AppComponent {
   selectIndex:any = ''
 
   userData:any =[]
+
+  openModal(template: TemplateRef<void>,index:any) {
+
+    // this.isUpdate = true
+    this.selectIndex = index
+    this.modalRef = this.modalService.show(template,index);
+    console.log(this.userData[index]);
+    console.log(this.userData);
+    
+    // this.isUpdate = false
+  }
 
   submit(){
     let user={
