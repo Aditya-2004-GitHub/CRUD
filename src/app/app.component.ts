@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router'
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-// import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +13,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AppComponent {
   title = 'DummyApi';
-
-  // constructor(private modalService: BsModalService) {}
+  
   modalRef?: BsModalRef;
 
 
@@ -33,7 +31,6 @@ export class AppComponent {
 
   openModal(template: TemplateRef<void>,index:any) {
 
-    // this.isUpdate = true
     this.selectIndex = index
     this.modalRef = this.modalService.show(template,index);
     console.log(this.userData[index]);
