@@ -38,8 +38,6 @@ export class AppComponent {
     this.modalRef = this.modalService.show(template,index);
     console.log(this.userData[index]);
     console.log(this.userData);
-    
-    // this.isUpdate = false
   }
 
   submit(){
@@ -48,6 +46,7 @@ export class AppComponent {
       lName : this.lName,
       mobile : this.mobile
     }
+  
     this.userData.push(user);
     localStorage.setItem("DummyApi",JSON.stringify(this.userData));
     this.fName=''

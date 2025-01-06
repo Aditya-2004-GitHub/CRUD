@@ -9,11 +9,11 @@
                 </div><br>
                 <div>
                     <label for="text" class="form-lable mb-2"><strong>Last Name :</strong> </label>
-                    <input class="form-control w-75 border" type="text" placeholder="Name" [(ngModel)]="lName">
+                    <input class="form-control w-75 border" type="text" placeholder="Last name" [(ngModel)]="lName">
                 </div><br>
                 <div>
                     <label for="text" class="form-lable mb-2"><strong>Mobile :</strong> </label>
-                    <input class="form-control w-75 border" type="text" placeholder="mobile" [(ngModel)]="mobile">
+                    <input class="form-control w-75 border" type="text" placeholder="Mobile" [(ngModel)]="mobile">
                 </div><br>
                 <button class="btn btn-5 btn-dark my-3 w-auto" (click)="submit()"
                     *ngIf="isUpdate == false">Submit</button>
@@ -53,8 +53,6 @@
     </div>
 
     <ng-template #template>
-        <!-- @for (item of userData; track $index) { -->
-        <!-- @if (isUpdate) { -->
         <div class="modal-header">
             <h4 class="modal-title pull-left">{{userData[selectIndex].fName}}</h4>
             <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
@@ -65,7 +63,5 @@
             <pre>Full Name: {{userData[selectIndex].fName}} {{userData[selectIndex].lName}}</pre>
             <pre>Mobile No.: {{userData[selectIndex].mobile}}</pre>
         </div>
-        <!-- } -->
-        <!-- } -->
     </ng-template>
 </body>
