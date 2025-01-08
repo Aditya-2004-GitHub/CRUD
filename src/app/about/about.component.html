@@ -1,0 +1,65 @@
+<div class="container py-5 ">
+    <h1 class="text-center mb-5 text-capitalize">Simple form to clear the concept of <span>CRUD</span> opration</h1>
+    <div class="row">
+        <div class="col-lg-5 col-12">
+            <div>
+                <label for="text" class="form-lable mb-2"><strong>Name :</strong> </label>
+                <input class="form-control w-75 border" type="text" placeholder="Name" [(ngModel)]="fName">
+            </div><br>
+            <div>
+                <label for="text" class="form-lable mb-2"><strong>Last Name :</strong> </label>
+                <input class="form-control w-75 border" type="text" placeholder="Last name" [(ngModel)]="lName">
+            </div><br>
+            <div>
+                <label for="text" class="form-lable mb-2"><strong>Mobile :</strong> </label>
+                <input class="form-control w-75 border" type="text" placeholder="Mobile" [(ngModel)]="mobile">
+            </div><br>
+            <button class="btn btn-5 btn-dark my-3 w-auto" (click)="submit()"
+                *ngIf="isUpdate == false">Submit</button>
+            <button class="btn btn-5 btn-dark my-3 w-auto" (click)="update()" *ngIf="isUpdate == true"> Update
+            </button>
+        </div>
+        <div class="col-lg-7 col-12">
+            <table class="table table-dark table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last Name</th>
+                        <th>Mobile</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of userData; track $index) {
+                    <tr>
+                        <td>{{item.fName}}</td>
+                        <td>{{item.lName}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>
+                            <button (click)="edit($index)" class="btn btn-5 mx-2 text-warning"><i
+                                    class="fa-regular fa-pen-to-square"></i></button>
+                            <button (click)="delete($index)" class="btn btn-5 text-danger mx-2"><i
+                                    class="fa-regular fa-trash-can"></i></button>
+                            <button (click)="openModal(template,$index)" class="btn btn-5 text-secondary mx-2"><i
+                                    class="fa-regular fa-eye"></i></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{userData[selectIndex].fName}}</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <pre>Full Name: {{userData[selectIndex].fName}} {{userData[selectIndex].lName}}</pre>
+        <pre>Mobile No.: {{userData[selectIndex].mobile}}</pre>
+    </div>
+</ng-template>
